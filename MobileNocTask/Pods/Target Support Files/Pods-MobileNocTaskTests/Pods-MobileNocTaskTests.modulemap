@@ -1,0 +1,6 @@
+framework module Pods_MobileNocTaskTests {
+  umbrella header "Pods-MobileNocTaskTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
