@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ContentController.swift
 //  MobileNocTask
 //
 //  Created by Bola Ibrahim on 12/8/18.
@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import Alamofire
 
-class ViewController: UIViewController {
+class ContentViewController: UIViewController {
     
     private var contentArr = [Content]()
     private var filterArr = [Content]()
@@ -39,6 +39,8 @@ class ViewController: UIViewController {
             self.contentTableVIew.reloadData()
             
         }
+        
+        
     }
     
     func fetchNewData() {
@@ -54,7 +56,7 @@ class ViewController: UIViewController {
 
 // MARK: - Implementing Tableview protocols
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isFilteres == false ? contentArr.count : filterArr.count
     }
@@ -80,7 +82,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Implementing searchBar protocols
 
-extension ViewController: UISearchBarDelegate {
+extension ContentViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == "" {

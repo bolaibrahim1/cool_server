@@ -11,14 +11,24 @@ import Alamofire
 
 class NetworkHelper {
     
-    static func networkRequester(parameter: [String:Any]! = nil, url: String, way: HTTPMethod, completionHandler: @escaping ( _ result: AnyObject) -> Void) -> Void {
+    static func networkRequester(
+        parameter: [String:Any]! = nil,
+        url: String, way: HTTPMethod,
+        headers: [String : String]! = nil,
+        completionHandler: @escaping ( _ result: AnyObject) -> Void) -> Void {
         
         if AppDelegate().isConnectedToNetwork() == true {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             Global.ShowIndecator("start")
-            let headers = ["Authorization":"Basic YWRtaW5AYm9vdC5jb206YWRtaW4="]
             
-            SecurityCertificateManager.sharedInstance.defaultManager.request(url, method: way, parameters: parameter as [String : AnyObject]?, encoding: JSONEncoding.default, headers: headers).responseJSON {
+            SecurityCertificateManager.sharedInstance.defaultManager
+                .request(url,
+                         method: way,
+                         parameters: parameter as [String : AnyObject]?,
+                         encoding: JSONEncoding.default,
+                         headers: headers)
+                .validate()
+                .responseJSON {
                 (response) in
                 switch response.result {
                 case .success(_):
@@ -41,7 +51,7 @@ class NetworkHelper {
     static func failGetData() -> Void {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         Global.ShowIndecator("stop")
-        Global.showAlertMessage(title: "Request Failure", Message: "Please make sure of the following :\n  1-You have good net connection. \n 2-Server Error.\n Or try again later")
+        Global.showAlertMessage(title: "Request Failure", Message: "Please make sure of the following :\n  1- You have good net connection. \n 2- Server Error.\n Or try again later. \n 3- Falid Credential ")
     }
     
 }
