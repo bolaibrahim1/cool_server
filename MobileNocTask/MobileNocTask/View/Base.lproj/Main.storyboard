@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="X2u-6p-Gqb">
             <objects>
-                <viewController id="tNb-Yn-i1I" customClass="LoginViewController" customModule="MobileNocTask" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="tNb-Yn-i1I" customClass="LoginViewController" customModule="MobileNocTask" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rgI-rC-Iav">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,7 +55,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginBtn:" destination="tNb-Yn-i1I" eventType="touchUpInside" id="HdL-8r-YoB"/>
+                                    <action selector="loginBtn:" destination="tNb-Yn-i1I" eventType="touchUpInside" id="xre-xD-QO1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -79,12 +79,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpR-jP-7Tj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-518.70503597122308" y="129.49640287769785"/>
+            <point key="canvasLocation" x="-519" y="134"/>
         </scene>
         <!--Content View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ContentViewController" customModule="MobileNocTask" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContentVC" id="BYZ-38-t0r" customClass="ContentViewController" customModule="MobileNocTask" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

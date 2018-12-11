@@ -51,7 +51,7 @@ class NetworkHelper {
     static func failGetData() -> Void {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         Global.ShowIndecator("stop")
-        Global.showAlertMessage(title: "Request Failure", Message: "Please make sure of the following :\n  1- You have good net connection. \n 2- Server Error.\n Or try again later. \n 3- Falid Credential ")
+        Global.showAlertMessage(title: "Request Failure", Message: "Please make sure of the following :\n  1- You have Data Connection. \n 2- Check your server and try again. \n 3- check your Credential ")
     }
     
 }

@@ -24,7 +24,7 @@ class ApiClient: NSObject {
         
         UserDefaults.standard.set(base64Credentials, forKey: "CredentialToken")
 
-        NetworkHelper.networkRequester(url: BackEndServant.get_ContentApi(), way: .get, headers: headers) { (result) in
+        NetworkHelper.networkRequester(url: BackEndServant.get_ContentApi() + "?page=0&size=2", way: .get, headers: headers) { (result) in
             if let deserializedObject = Mapper<DataModel>().map(JSONObject: result) {
                 completionHandler(deserializedObject)
             }
@@ -37,7 +37,8 @@ class ApiClient: NSObject {
     static func getData(page: Int, size: Int, completionHandler: @escaping ( _ data: DataModel) -> Void) {
         
         let credentialToken = UserDefaults.standard.value(forKey: "CredentialToken")
-        let headers = ["Authorization" : "Basic \(String(describing: credentialToken))"]
+        print(credentialToken!)
+        let headers = ["Authorization" : "Basic \(String(describing: credentialToken!))"]
         
         NetworkHelper.networkRequester(url: BackEndServant.get_ContentApi() + "?page=\(page)&size=\(size)", way: .get, headers: headers) { (result) in
             if let deserializedObject = Mapper<DataModel>().map(JSONObject: result) {

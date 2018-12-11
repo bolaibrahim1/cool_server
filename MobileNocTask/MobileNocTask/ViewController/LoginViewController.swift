@@ -10,19 +10,23 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var userNameTxtField: UITextField!
-    @IBOutlet weak var passwordTxtField: UITextField!
+    @IBOutlet weak var userNameTxtField: UITextView!
+    @IBOutlet weak var passwordTxtField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
     }
     
     @IBAction func loginBtn(_ sender: Any) {
-        
+        ApiClient.login(userName: userNameTxtField.text!, password: passwordTxtField.text!) { (DataModel) in
+            let contentVC = self.storyboard?.instantiateViewController(withIdentifier: "ContentVC") as! ContentViewController
+            contentVC.contentArr = DataModel.content!
+            self.present(contentVC, animated: true, completion: nil)
+
+            
+        }
     }
     
     /*

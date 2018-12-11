@@ -12,7 +12,8 @@ import Alamofire
 
 class ContentViewController: UIViewController {
     
-    private var contentArr = [Content]()
+    var contentArr = [Content]()
+    
     private var filterArr = [Content]()
     private var currentPage = 0
     private var size = 2
@@ -31,14 +32,14 @@ class ContentViewController: UIViewController {
         contentTableVIew.dataSource = self
         contentTableVIew.estimatedRowHeight = 100
         
-        ApiClient.getData(page: 0, size: 10) { (DataModel) in
-            print(DataModel)
-            self.contentArr = DataModel.content!
-            self.first = DataModel.first!
-            self.last = DataModel.last!
-            self.contentTableVIew.reloadData()
-            
-        }
+//        ApiClient.getData(page: 0, size: 10) { (DataModel) in
+//            print(DataModel)
+//            self.contentArr = DataModel.content!
+//            self.first = DataModel.first!
+//            self.last = DataModel.last!
+//            self.contentTableVIew.reloadData()
+//
+//        }
         
         
     }
@@ -57,6 +58,7 @@ class ContentViewController: UIViewController {
 // MARK: - Implementing Tableview protocols
 
 extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isFilteres == false ? contentArr.count : filterArr.count
     }
@@ -73,11 +75,13 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastItem = contentArr.count - 1
-        if (indexPath.row == lastItem && self.first == true && self.last == false) || (indexPath.row == lastItem && self.first == false && self.last == false){
+        if (indexPath.row == lastItem && self.first == true && self.last == false) || (indexPath.row == lastItem && self.first == false && self.last == false) {
             self.currentPage += 1
             fetchNewData()
-        }
+        }         
     }
+    
+    
 }
 
 // MARK: - Implementing searchBar protocols
